@@ -1,0 +1,12 @@
+{
+	"identifier": "io.github.edbartholomew.sn-pure-black-theme-dev",
+	"name": "Pure Black (dev)",
+	"content_type": "SN|Theme",
+	"area": "themes",
+	"version": "0.0.0",
+	"url": "http://localhost:8000/dist/theme.css",
+	"dock_icon": {
+		"type": "circle",
+		"background_color": "#0680fc"
+	}
+}

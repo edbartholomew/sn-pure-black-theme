@@ -1,0 +1,7 @@
+# Assets-only Worker: serves ext.json, theme.css and theme.zip from ./public.
+# The release job fills ./public and runs `wrangler deploy`; nothing here runs at request time.
+name = "sn-pure-black-theme"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./public"

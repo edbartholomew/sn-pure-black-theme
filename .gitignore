@@ -1,0 +1,4 @@
+dist/
+public/
+.wrangler/
+node_modules/

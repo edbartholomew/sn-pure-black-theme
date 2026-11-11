@@ -1,0 +1,15 @@
+{
+	"identifier": "io.github.edbartholomew.sn-pure-black-theme",
+	"name": "Pure Black",
+	"content_type": "SN|Theme",
+	"area": "themes",
+	"version": "0.0.0",
+	"description": "Pure-black theme for Standard Notes.",
+	"url": "https://sn-pure-black-theme.edbartholomew.workers.dev/theme.css",
+	"download_url": "https://sn-pure-black-theme.edbartholomew.workers.dev/theme.zip",
+	"latest_url": "https://sn-pure-black-theme.edbartholomew.workers.dev/ext.json",
+	"dock_icon": {
+		"type": "circle",
+		"background_color": "#0680fc"
+	}
+}

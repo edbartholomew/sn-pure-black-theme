@@ -1,0 +1,203 @@
+:root {
+	/* ---- Palette ---- */
+
+	/* Background: editor and note list */
+	--background-color: #000000;
+
+	/* Surface: sidebar, selected note, cards */
+	--surface-color: hsl(240, 2.5%, 7.5%);
+
+	/* Surface, one step lighter: hovered rows, sheet cards, hovered tag bubbles */
+	--surface-light-color: hsl(240, 1.5%, 12.5%);
+
+	/* Surface, two steps lighter: button hover, dividers */
+	--surface-lighter-color: hsl(240, 2.5%, 18%);
+
+	/* Accent: selected note bar, links, toggles, buttons */
+	--highlight-color: hsl(210, 98%, 50%);
+
+	/* Selected row tint: the accent at 15% */
+	--selected-color: color-mix(in srgb-linear, var(--highlight-color), transparent 85%);
+
+	/* ---- App hooks ---- */
+
+	/* Sidebar */
+	--navigation-column-background-color: var(--surface-color);
+
+	/* Selected note */
+	--item-cell-selected-background-color: var(--surface-color);
+
+	/* Search field above the note list */
+	--items-column-search-background-color: var(--surface-color);
+
+	/* Preferences menu, selected item */
+	--preferences-navigation-selected-background-color: var(--selected-color);
+
+	/* Highlighted menu items: block picker, link list, history list, keyboard focus in menus */
+	--sn-stylekit-info-backdrop-color: var(--selected-color);
+
+	/* Scrollbar thumb */
+	--sn-stylekit-scrollbar-thumb-color: hsl(215, 4%, 25%);
+
+	/* Text selection */
+	--text-selection-background-color: hsl(215, 36%, 42.5%);
+}
+
+/* ---- Sidebar (views and tags) ---- */
+
+#navigation {
+	.tag {
+		/* Unselected item text */
+		--navigation-item-text-color: var(--sn-stylekit-neutral-color);
+
+		/* Selected item */
+		&.selected {
+			--navigation-item-selected-background-color: var(--selected-color);
+			--navigation-item-text-color: white;
+		}
+
+		/* Hovered item. Mouse only, because on iOS a tap sticks as hover. */
+		@media (hover: hover) {
+			&:hover {
+				--navigation-item-text-color: white;
+
+				/* Row background when not also selected */
+				&:not(.selected) {
+					--navigation-item-selected-background-color: var(--surface-light-color);
+				}
+			}
+		}
+
+		/* Item icon on touch. A tap triggers the app's hover colours, so keep the resting ones. */
+		@media (hover: none) {
+			&:hover .tag-icon {
+				.text-neutral {
+					color: var(--sn-stylekit-neutral-color);
+				}
+
+				.text-info {
+					color: var(--sn-stylekit-info-color);
+				}
+			}
+		}
+	}
+}
+
+/* ---- Note list ---- */
+
+/* Preview text under each note title */
+.content-list-item .overflow-ellipsis {
+	color: var(--sn-stylekit-neutral-color);
+}
+
+/* ---- Editor ---- */
+
+/* Code block */
+.Lexical__code {
+	--sn-stylekit-contrast-background-color: var(--surface-color);
+}
+
+/* ---- Mobile sheets ---- */
+
+[data-mobile-popover] {
+	/* Sheet body */
+	--sn-stylekit-passive-color-5: hsl(240, 2.5%, 9%);
+
+	/* Handle strip and title bar */
+	> .bg-default {
+		--sn-stylekit-background-color: var(--sn-stylekit-passive-color-5);
+	}
+
+	/* Divider under the title bar */
+	> [data-mobile-modal-header] {
+		--sn-stylekit-border-color: var(--surface-lighter-color);
+	}
+
+	/* Option cards in the scroll body */
+	> .bg-passive-5 .bg-default {
+		--sn-stylekit-background-color: var(--surface-light-color);
+	}
+}
+
+/* ---- Desktop footer ---- */
+
+#footer-bar {
+	--sn-stylekit-contrast-background-color: var(--surface-color);
+}
+
+/* ---- Preferences ---- */
+
+/* Preferences menu items */
+.preferences-menu-item {
+	/* Unselected, hovered */
+	&:hover:not(.selected) {
+		--sn-stylekit-background-color: var(--surface-color);
+	}
+
+	/* Selected, hovered */
+	&.selected:hover {
+		--sn-stylekit-background-color: var(--selected-color);
+		--sn-stylekit-border-color: var(--sn-stylekit-info-color);
+	}
+}
+
+/* Preference cards */
+.bg-\[--preferences-background-color\] .bg-default {
+	--sn-stylekit-background-color: var(--surface-color);
+}
+
+/* ---- Controls ---- */
+
+/* Round buttons in the mobile footer, above the note list and beside the note title */
+:is(#navigation > .fixed.bottom-0, #items-title-bar, #editor-title-bar) button.rounded-full.border-border {
+	background-color: var(--surface-color);
+
+	/* Hovered. Mouse only, because on iOS a tap sticks as hover. */
+	@media (hover: hover) {
+		&:hover {
+			background-color: var(--surface-lighter-color);
+		}
+	}
+}
+
+/* Buttons such as Change email and Change password, and dialog buttons: hovered and focused */
+.bg-normal-button {
+	&:hover,
+	&:focus {
+		--sn-stylekit-contrast-background-color: var(--surface-lighter-color);
+	}
+}
+
+/* Toggle switches */
+.rounded-full.bg-clip-padding {
+	/* Track, off */
+	&.bg-neutral {
+		background-color: color-mix(in srgb-linear, var(--sn-stylekit-neutral-color), black 75%);
+	}
+
+	/* Thumb */
+	> .bg-default {
+		--sn-stylekit-background-color: white;
+	}
+}
+
+/* ---- Menus ---- */
+
+/* Tag, note and quick settings menus: hovered item */
+.hover\:bg-passive-3,
+.enabled\:hover\:bg-passive-3 {
+	--sn-stylekit-passive-color-3: var(--surface-light-color);
+}
+
+/* Block picker, link search and most other lists: hovered item */
+.hover\:bg-contrast {
+	--sn-stylekit-contrast-background-color: var(--surface-light-color);
+}
+
+/* Tag bubbles under the note title: hovered and focused */
+.bg-passive-4-opacity-variant {
+	&:hover,
+	&:focus {
+		--sn-stylekit-contrast-background-color: var(--surface-light-color);
+	}
+}

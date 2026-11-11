@@ -1,0 +1,23 @@
+{
+	"name": "sn-pure-black-theme",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"build": "./scripts/build.sh",
+		"dev": "./scripts/dev.sh",
+		"prepare": "husky"
+	},
+	"sn": {
+		"main": "dist/theme.css"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^21.2.4",
+		"@commitlint/config-conventional": "^21.2.4",
+		"husky": "^9.1.7"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	}
+}
